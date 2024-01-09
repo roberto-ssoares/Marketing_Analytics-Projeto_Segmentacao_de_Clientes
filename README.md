@@ -5,4 +5,6 @@ A segmentação ajuda uma empresa a:
 •Selecionar  o  melhor  canal  de  comunicação  para  o  segmento,  que  pode  ser e-mail, publicações em mídias sociais, publicidade em rádio ou outra abordagem, dependendo do segmento.
 •Identificar  maneiras  de  melhorar  produtos  ou  novas  oportunidades  de  produtos  ou serviços.
 •Estabelecer melhores relacionamentos com os clientes.•Testar as opções de preços.•Concentrar-se nos clientes mais rentáveis.•Melhorar o atendimento ao cliente.
-•Escolher entre venda por atacado e venda cruzada de outros produtos e serviços.Data Science Academy ssoaresroberto@hotmail.com 5734706247d7ddb3578b457a
+•Escolher entre venda por atacado e venda cruzada de outros produtos e serviços.
+
+

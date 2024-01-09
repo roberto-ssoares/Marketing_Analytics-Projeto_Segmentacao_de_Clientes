@@ -14,37 +14,17 @@ Marketing Analytics reúne dados de todos os canais de marketing e os consolida 
 -
 
 
+Você pode responder a perguntas como estas:
+
 ![image](imagens/marketing_analytics_oque_se_pode_fazer.png)
 -
-
-## O Que Você Pode Fazer com Marketing Analytics?
-
-Com Marketing Analytics, você pode responder a perguntas como estas:
-
-- Como estão as nossas iniciativas de marketing hoje? Que tal a longo prazo? O que podemos fazer para melhorá-las?
-
-
-- Como nossas atividades de marketing se comparam às de nossos concorrentes? Onde eles estão gastando seu tempo e dinheiro? Eles estão usando canais que não estamos usando?
-
-
-- O que devemos fazer em seguida? Nossos recursos de marketing estão alocados corretamente? Estamos dedicando tempo e dinheiro aos canais certos? Como devemos priorizar nossos investimentos para o próximo ano?
-
-
-- Qual o perfil dos nossos clientes? Eles são da mesma área regional? Tem os mesmos gostos e preferências?
-
-
-- Consigo segmentar meus clientes por similaridade? Tenho como saber os gastos por grupo?
-
-
-- E muitas outras...
-
 
 
 
 
 ## Projeto de Segmentação de Clientes - Food Delivery
 
-![image](imagens/projeto_segmentacao_cliente.png)
+![image](imagens/projeto_segmentacao_clientes.png)
 -
 
 A segmentação permite que os profissionais de marketing adaptem melhor seus esforços de marketing a vários subconjuntos de público-alvo.

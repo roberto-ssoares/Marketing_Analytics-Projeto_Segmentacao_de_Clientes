@@ -1,5 +1,5 @@
 # Marketing Analytics 
-## Projeto: Segmentação de Clientes
+## Projeto de Segmentação de Clientes
 
 A segmentação permite que os profissionais de marketing adaptem melhor seus esforços de marketing a vários subconjuntos de público-alvo.
 
@@ -13,5 +13,7 @@ A segmentação ajuda uma empresa a:
 - Concentrar-se nos clientes mais rentáveis.
 - Melhorar o atendimento ao cliente.
 - Escolher entre venda por atacado e venda cruzada de outros produtos e serviços.
+
+## Definição do Projeto
 
 

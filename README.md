@@ -91,6 +91,22 @@ A segmentação de clientes pode ser praticada por todas as empresas, independen
 
 Dataset com 260645 linhas e 7 colunas
 
+## Dicionário de Dados
+
+
+
+|Variável                              | Descrição                                                             |
+|--------------------------------------|-----------------------------------------------------------------------|
+|id_transacao                          | ID da transação. Um mesmo ID pode ter vários itens de um pedido.      |
+|horario_pedido                        | Horário exato do pedido.                                              |
+|localidade                            | Localidade que processou o pedido (unidade do restaurante).           |
+|nome_item                             | Nome do item (pizza, salada, bebida e sobremesa).                     |
+|quantidade_item                       | Quantidade de itens no pedido.                                        |
+|latitude                              | Latitude da localidade onde o pedido foi gerado.                      |
+|longitude                             | Longitude da localidade onde o pedido foi gerado.                     |
+|--------------------------------------|-----------------------------------------------------------------------|
+
+
 
 
 

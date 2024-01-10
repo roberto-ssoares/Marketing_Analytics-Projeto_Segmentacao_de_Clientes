@@ -93,8 +93,6 @@ Dataset com 260645 linhas e 7 colunas
 
 ## Dicionário de Dados
 
-
-
 |Variável                              | Descrição                                                             |
 |--------------------------------------|-----------------------------------------------------------------------|
 |id_transacao                          | ID da transação. Um mesmo ID pode ter vários itens de um pedido.      |
@@ -104,7 +102,7 @@ Dataset com 260645 linhas e 7 colunas
 |quantidade_item                       | Quantidade de itens no pedido.                                        |
 |latitude                              | Latitude da localidade onde o pedido foi gerado.                      |
 |longitude                             | Longitude da localidade onde o pedido foi gerado.                     |
-|--------------------------------------|-----------------------------------------------------------------------|
+|______________________________________|_______________________________________________________________________|
 
 
 

@@ -87,9 +87,10 @@ A segmentação de clientes pode ser praticada por todas as empresas, independen
 
 ### Carregando e Compreendendo os Dados
 
-![image](imagens/segmentation_ajuda.png)
+![image](imagens/imagem01.png)
 
 Dataset com 260645 linhas e 7 colunas
+
 
 
 

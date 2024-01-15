@@ -91,6 +91,20 @@ A segmentação de clientes pode ser praticada por todas as empresas, independen
 
 Dataset com 260645 linhas e 7 colunas
 
+## Dicionário de Dados
+
+|Variável                              | Descrição                                                             |
+|--------------------------------------|-----------------------------------------------------------------------|
+|id_transacao                          | ID da transação. Um mesmo ID pode ter vários itens de um pedido.      |
+|horario_pedido                        | Horário exato do pedido.                                              |
+|localidade                            | Localidade que processou o pedido (unidade do restaurante).           |
+|nome_item                             | Nome do item (pizza, salada, bebida e sobremesa).                     |
+|quantidade_item                       | Quantidade de itens no pedido.                                        |
+|latitude                              | Latitude da localidade onde o pedido foi gerado.                      |
+|longitude                             | Longitude da localidade onde o pedido foi gerado.                     |
+|______________________________________|_______________________________________________________________________|
+
+
 
 ## Dicionário de Dados
 
@@ -197,6 +211,72 @@ Observe como uma simples mudança nos dados já oferece uma perspectiva completa
 |max  |           5.000000|       5.000000|       5.000000|       5.000000|
 
 Observamos que os valores para salada são baixos, os clientes não consomem muito.
+
+
+
+Extraindo Granularidade de Tempo
+
+|idx   |id_transacao|horario_pedido      |localidade | bebida | pizza | sobremesa | salada | mes|   ano|
+|------|------------|--------------------|-----------|--------|-------|-----------|--------|----|------|
+|0     |0x10000a    |2019-01-29 00:48:00 |          9|       0|      1|          1|       0|  01|  2019|
+|1     |0x100058    |2019-05-05 00:08:00 |          6|       0|      2|          2|       0|  05|  2019|
+|2     |0x1000c8    |2019-01-28 19:24:00 |          9|       4|      4|          5|       1|  01|  2019|
+|3     |0x10014c    |2019-02-23 00:15:00 |          6|       0|      1|          1|       0|  02|  2019|
+|4     |0x1001d8    |2019-06-30 17:50:00 |          2|       3|      3|          3|       0|  06|  2019|
+|5     |0x1002af    |2019-12-28 17:25:00 |          9|       3|      3|          4|       1|  12|  2019|
+|6     |0x10034c    |2019-03-12 18:17:00 |          5|       3|      4|          4|       0|  03|  2019|
+|7     |0x100378    |2019-10-13 18:44:00 |          4|       4|      4|          5|       1|  10|  2019|
+|8     |0x100391    |2019-10-10 18:07:00 |          5|       4|      4|          4|       0|  10|  2019|
+|9     |0x1003a9    |2019-06-23 00:39:00 |          6|       0|      2|          2|       0|  06|  2019|
+
+- A coluna de horário do pedido tem detalhes como mês, dia e ano. Em algum momento pode ser interessante fazer a segmentação por mês, por exemplo. 
+- Extraímos o mês e colocamos em uma coluna separada.
+
+
+### Análise Descritiva
+
+#### "Distplot"/Histplot dos Atributos Usados Para Segmentação
+
+Um histograma é uma ferramenta de visualização clássica que representa a distribuição de uma ou mais variáveis contando o número de observações que se enquadram em compartimentos discretos.
+
+Esta função pode normalizar a estatística calculada dentro de cada compartimento para estimar frequência, densidade ou massa de probabilidade, e pode adicionar uma curva suave obtida usando uma estimativa de densidade de kernel, semelhante a kdeplot().
+
+![image](imagens/distplot01.png)
+
+ - Nos temos os pedidos registrados 24h por dia. Em alguns horários temos um volume alto e em outros próximos a zero.
+ - Para pizza e sobremesa, observamos um equilíbrio indicando um frequência similar, o mesmo não vemos em salada onde temos um pico em quantidade zero.
+ - Localida temos também um padrão, com dois picos específicos.
+ 
+ 
+ #### Gráfico de Total de Pedidos Por Localidade
+ 
+ 
+ ![image](imagens/count_plot01.png)
+ 
+ - Observamos na localidade 2 o maior número de pedidos e na localidade 5 o menor número de pedidos.
+ 
+ 
+ #### Regplot dos Atributos Usados Para Segmentação
+ 
+- A função regplot() do Seaborn é uma ferramenta poderosa para criar gráficos de dispersão com uma linha de regressão ajustada aos dados. Essa função combina duas funcionalidades principais:
+    
+    - Gráfico de Dispersão (Scatter Plot): Exibe pontos no plano cartesiano, onde cada ponto representa um par de valores. Isso é útil para visualizar a relação entre duas variáveis.
+    
+    - Linha de Regressão (Regression Line): A função regplot() calcula automaticamente e exibe uma linha de regressão linear. Essa linha representa a melhor estimativa da relação linear entre as variáveis dependentes e independentes.
+
+- A linha de regressão é ajustada aos dados usando métodos estatísticos para minimizar a soma dos quadrados dos resíduos, proporcionando uma representação visual da tendência geral nos dados. 
+    
+    - Se a linha de regressão estiver inclinada para cima, indica uma correlação positiva entre as variáveis, 
+    - enquanto uma inclinação para baixo indica uma correlação negativa.
+
+- A função regplot() é útil para identificar padrões, tendências e para fazer previsões aproximadas com base na relação entre duas variáveis. 
+- Além disso, ela pode fornecer intervalos de confiança ao redor da linha de regressão para indicar a variabilidade da estimativa.
+
+![image](imagens/regplot01.png)
+
+Aqui podemos ver o comportamento entre as variáveis. 
+
+ 
 
 
 

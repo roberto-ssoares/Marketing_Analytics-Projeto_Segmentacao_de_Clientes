@@ -276,15 +276,118 @@ Esta função pode normalizar a estatística calculada dentro de cada compartime
 
 Aqui podemos ver o comportamento entre as variáveis. 
 
- 
+
+### Análise de Cluster
+
+- Clusterização é um processo de aprendizagem não supervisionada, quando entregamos a um algoritmo de Machine Learning somente os dados de entrada e durante o treinamento, o algoritmo cria um modelo capaz de gerar saídas, nesse caso grupos, ou clusters.
+
+![image](imagens/cluster.png)
 
 
+#### Algoritmo de Clusterização - K-means
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+
+O K-Means Clustering é um algoritmo de aprendizado de máquina não supervisionado. Em contraste com os algoritmos tradicionais de aprendizado de máquina supervisionado, o K-Means tenta classificar dados sem antes ter sido treinado com dados rotulados. Depois que o algoritmo é executado e os grupos são definidos, qualquer novo dado pode ser facilmente atribuído ao grupo mais relevante.
 
 
+![image](imagens/kmeans.png)
 
 
+K-Means é provavelmente o algoritmo de agrupamento mais conhecido. É fácil entender e implementar! Confira o gráfico abaixo para obter uma ilustração.
+
+![image](imagens/k-means.gif)
 
 
+- Para começar, primeiro selecionamos um número de classes / grupos que desejamos e inicializamos aleatoriamente seus respectivos pontos centrais (centróides). Para descobrir o número de classes a serem usadas, é bom dar uma olhada rápida nos dados e tentar identificar grupos distintos. 
+
+
+- Cada ponto de dados é classificado calculando a distância entre esse ponto e cada centro de grupo e, em seguida, classificando o ponto no grupo cujo centro está mais próximo.
+
+
+- Com base nesses pontos classificados, recalculamos o centro do grupo, calculando a média de todos os vetores do grupo.
+
+
+- Repitimos essas etapas para um número definido de iterações ou até que os centros dos grupos não alterem muito entre as iterações. Você também pode optar por inicializar aleatoriamente os centros do grupo algumas vezes e selecionar a execução que parece ter fornecido os melhores resultados.
+
+O K-Means tem a vantagem de ser muito rápido, pois estamos realmente calculando as distâncias entre pontos e centros de grupos; são poucos cálculos! Portanto, possui uma complexidade linear O(n).
+
+Por outro lado, o K-Means tem algumas desvantagens. Primeiro, você deve selecionar quantos grupos / clusters. Isso nem sempre é trivial e, idealmente, com um algoritmo de agrupamento, queremos que ele os descubra, porque o objetivo é obter algumas informações dos dados. 
+
+O K-means também começa com uma escolha aleatória de centros de cluster e, portanto, pode produzir resultados de cluster diferentes em execuções diferentes do algoritmo. Assim, os resultados podem não ser repetíveis e não têm consistência. Outros métodos de cluster são mais consistentes.
+
+K-Medians é outro algoritmo de agrupamento relacionado ao K-Means, exceto que, em vez de recalcular os pontos centrais do grupo usando a média, usamos o vetor de medianas do grupo. Esse método é menos sensível a outliers (por causa do uso da Mediana), mas é muito mais lento para conjuntos de dados maiores, pois a classificação é necessária em cada iteração ao calcular o vetor Mediana.
+
+
+#### Outros Algoritmos de Clusterização:
+    
+- Mean-Shift Clustering
+- Density-Based Spatial Clustering of Applications with Noise (DBSCAN)
+- Expectation–Maximization (EM) Clustering using Gaussian Mixture Models (GMM)
+- Agglomerative Hierarchical Clustering
+
+
+#### Métricas de Clusterização
+
+Métrica: Número de observações
+- O número de observações em cada cluster na partição final.
+
+Interpretação:
+- Examine o número de observações em cada cluster ao interpretar as medidas de variabilidade, como a distância média e a soma dos quadrados dentro do cluster. 
+- A variabilidade de um cluster pode ser afetada por ter um número menor ou maior de observações. 
+    - Por exemplo, a soma dos quadrados dentro do cluster se torna maior à medida que mais observações são adicionadas.
+- Examine os clusters que possuem significativamente menos observações que outros clusters. 
+- Clusters que têm poucas observações podem conter discrepâncias ou observações incomuns com características únicas.
+
+
+Métrica: Soma de quadrados dentro do cluster (Within cluster sum of squares)
+- A soma dos desvios ao quadrado de cada observação e do centróide do cluster.
+
+Interpretação:
+- A soma dos quadrados dentro do cluster é uma medida da variabilidade das observações dentro de cada cluster. 
+- Em geral, um cluster que possui uma pequena soma de quadrados é mais compacto do que um cluster que possui uma grande soma de quadrados.
+- Clusters com valores mais altos exibem maior variabilidade das observações dentro do cluster.
+- No entanto, semelhante à soma dos quadrados e dos quadrados médios na ANOVA, a soma dos quadrados dentro do cluster é influenciada pelo número de observações. 
+- À medida que o número de observações aumenta, a soma dos quadrados se torna maior. 
+- Portanto, a soma dos quadrados dentro do cluster geralmente não é diretamente comparável entre os clusters com diferentes números de observações. 
+- Para comparar a variabilidade dentro do cluster de diferentes clusters, use a distância média do centróide.
+
+
+Métrica: Distância média do centróide
+- A média das distâncias das observações ao centróide de cada cluster.
+
+Interpretação:
+- A distância média das observações ao centróide do cluster é uma medida da variabilidade das observações dentro de cada cluster. 
+- Em geral, um cluster que possui uma distância média menor é mais compacto do que um cluster que tem uma distância média maior.
+- Clusters com valores mais altos exibem maior variabilidade das observações dentro do cluster.
+
+Métrica: Distância máxima do centróide
+- O máximo das distâncias das observações ao centróide de cada cluster.
+
+Interpretação:
+- A distância máxima das observações ao centróide do cluster é uma medida da variabilidade das observações dentro de cada cluster. 
+- Um valor máximo mais alto, especialmente em relação à distância média, indica uma observação no cluster que fica mais distante do centróide do cluster.
+
+
+Métrica: Centróide do cluster
+- O meio de um cluster. Um centróide é um vetor que contém um número para cada variável, e que cada número é a média de uma variável para as observações nesse cluster. 
+- O centróide pode ser considerado a média multidimensional do cluster.
+
+Interpretação:
+- Use o centróide do cluster como uma medida geral da localização do cluster e para ajudar a interpretar cada cluster. 
+- Cada centróide pode ser visto como representando a "observação média" dentro de um cluster em todas as variáveis da análise.
+
+
+Métrica: Distâncias entre centróides de cluster
+- As distâncias entre os centróides do cluster medem a distância entre os centróides dos clusters na partição final.
+
+Interpretação:
+- Embora os valores da distância não sejam muito informativos, você pode comparar as distâncias para ver quão diferentes os clusters são. 
+- Uma distância maior geralmente indica uma diferença maior entre os clusters.
+
+Referências:
+Cluster Analysis
+https://www-users.cs.umn.edu/~kumar001/dmbook/ch8.pdf
 
 
 

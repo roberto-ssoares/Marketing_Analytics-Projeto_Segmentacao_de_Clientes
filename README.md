@@ -409,43 +409,160 @@ Representamos graficamente a relação entre o número de clusters e a soma dos 
 Vamos testar diferentes valores de K (valores de cluster) entre 2 e 10.
     - Devemos conversar com a área de negócio para saber qual a estratégica quanto a criação e número de grupos/clusters.
 
-![image](imagens/wcss_segmentacao01.gif)
+![image](imagens/wcss_segmentacao01.png)
 
 - Escolhemos o valor ideal de clusters e criamos o modelo final para a Segmentação 1. 
 - Observe no gráfico acima que não há certo ou errado. 
 - Poderíamos trabalhar com qualquer valor entre 2 e 10 (não faz sentido criar apenas 1 cluster).
 
 - O gráfico acima é chamado de Curva de Elbow e normalmente usamos o valor com o menor WCSS. 
-    - Quanto menor o WCSS melhor, pois assim representa mais homogeneidade.
+    - Quanto menor o WCSS melhor, pois assim representa mais homogeneidade nos clusters "menor distância dos dados dentro dos cluasters".
     
 - Mas isso deve ser alinhado com as necessidade de negócio. 
     - Para esse exemplo, não faria sentido usar 10 clusters. 
     - Vamos começar com 2 clusters e avaliar e interpretar os resultados.
-    
+
+
 
 #### Segmentação 1 - Visualização e Interpretação dos Segmentos
 
 
-![image](imagens/kmeans_segmentacao01.gif)
+![image](imagens/kmeans_segmentacao01.png)
 
 
 **Interpretação**: 
-
-    - O ponto vermelho é o centróide de cada cluster (segmento).
-
-
-    - No cluster 1 (área em verde) temos os clientes que pediram 0, 1 ou 2 Pizzas. Em todos os casos houve pedido de Sobremesa.
-
-
-    - No cluster 2 (área em cinza) estão clientes que pediram 2, 3, 4 ou 5 Pizzas. Perceba que à medida que o pedido tem maior número de Pizzas, também aumenta o número de Sobremesas.
-
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- No cluster 1 (área em verde) temos os clientes que pediram 0, 1 ou 2 Pizzas. Em todos os casos houve pedido de Sobremesa.
+- No cluster 2 (área em cinza) estão clientes que pediram 2, 3, 4 ou 5 Pizzas. Perceba que à medida que o pedido tem maior número de Pizzas, também aumenta o número de Sobremesas.
 
 **Análise**:
 
-    - Cluster 1 - Clientes que pedem menos Pizzas. Todos pedem sobremesa.
-
-    - Cluster 2 - Clientes que pedem mais Pizzas. Todos pedem sobremesa em volume maior.
+- Cluster 1 - Clientes que pedem menos Pizzas. Todos pedem sobremesa.
+- Cluster 2 - Clientes que pedem mais Pizzas. Todos pedem sobremesa em volume maior.
 
 Como estratégia de Marketing, poderíamos oferecer ao cliente uma sobremesa grátis no caso de comprar mais uma Pizza de maior valor. Com base na Segmentação provavelmente essa estratégia teria sucesso.
 
 
+## Segmentação 2
+
+Segmentação 2 - Variáveis Pizza e Salada
+
+![image](imagens/curva_elbow_segm02.png)
+
+- Vamos criar o modelo com 3 clusters.
+
+
+![image](imagens/kmeans_segm02.png)
+
+
+**Interpretação**: 
+
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- No cluster 1 (área em cinza) temos os clientes que pediram menos Pizzas e mais Saladas.
+- No cluster 2 (área em verde escuro) temos os clientes que pediram poucas Pizzas e poucas Saladas.
+- No cluster 3 (área em verde claro) estão clientes que pediram mais Pizzas e menos Saladas.
+
+**Análise**:
+
+- Os clusters 1 e 3 são de clientes com comportamentos opostos. 
+- A equipe de Marketing poderia concentrar os esforços nos clientes do cluster 2, pois são clientes que compram Pizzas e Saladas e, portanto, tendem a consumir mais itens variados evitando manter os estoques cheios de um único item. 
+- Ou então, concentrar os esforços nos clientes que consomem produtos que geram mais lucro. 
+- Teríamos que verificar qual item, Pizza ou Salada, é mais rentável.
+
+
+## Segmentação 3
+
+Segmentação 3 - Variáveis Pizza e Localidade
+
+![image](imagens/curva_elbow_segm03.png)
+
+- Vamos criar o modelo com 4 clusters.
+
+![image](imagens/kmeans_segm03.png)
+
+**Interpretação**: 
+
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- Observe que os clusters da esquerda no gráfico contém os pedidos de todas as Localidades, mas com menor número de Pizzas. 
+- Já os clusters da direita no gráfico contém pedidos de todas as Localidades com com maior número de Pizzas.
+
+**Análise**:
+
+- Queremos aumentar as vendas, certo? 
+- Então teríamos que investigar mais a fundo os pedidos dos clusters à esquerda do gráfico e compreender em mais detalhes as características desses pedidos e que tipo de oferta podemos fazer.
+
+
+
+## Segmentação 4
+
+Segmentação 4 - Variáveis Pizza, Salada e Localidade
+
+![image](imagens/curva_elbow_segm04.png)
+
+- Vamos criar o modelo com 4 clusters.
+
+
+![image](imagens/kmeans_segm04.png)
+
+
+**Interpretação**: 
+
+- Observamos 2 clusters inferiores e 2 superiores.
+- Cada ponto de dado representa uma coordenada de 3 dimensões.
+
+**Análise**:
+
+- Aqui o ideal é avaliar o gráfico de forma interativa aproveitando essa propriedade do Plotly.
+
+
+## Segmentação 5
+
+Segmentação 5 - Variáveis Pizza, Salada e Sobremesa
+
+![image](imagens/curva_elbow_segm05.png)
+
+- Vamos criar o modelo com 2 clusters.
+
+
+![image](imagens/kmeans_segm05.png)
+
+
+**Interpretação**: 
+
+- Observamos a clara separação entre os dados dois 2 clusters.
+- Cada ponto de dado representa uma coordenada de 3 dimensões.
+
+**Análise**:
+
+- Aqui o ideal é avaliar o gráfico de forma interativa aproveitando essa propriedade do Plotly.
+
+
+
+**Exemplo de Relatório final (Considerando a Segmentação 5)**
+
+
+|idx |index|  bebida|  pizza|  sobremesa|  salada|  localidade|  cluster|
+|----|-----|--------|-------|-----------|--------|------------|---------|
+|0   |    0|       0|      1|          1|       0|           9|        1|
+|1   |    1|       0|      2|          2|       0|           6|        1|
+|2   |    2|       4|      4|          5|       1|           9|        0|
+|3   |    3|       0|      1|          1|       0|           6|        1|
+|4   |    4|       3|      3|          3|       0|           2|        0|
+|5   |    5|       3|      3|          4|       1|           9|        0|
+|6   |    6|       3|      4|          4|       0|           5|        0|
+|7   |    7|       4|      4|          5|       1|           4|        0|
+|8   |    8|       4|      4|          4|       0|           5|        0|
+|9   |    9|       0|      2|          2|       0|           6|        1|
+|10  |   10|       0|      0|          1|       1|           4|        1|
+|11  |   11|       0|      1|          3|       2|           8|        1|
+|12  |   12|       0|      1|          1|       0|           2|        1|
+|13  |   13|       0|      1|          1|       0|           2|        1|
+|14  |   14|       3|      3|          3|       0|           4|        0|
+|15  |   15|       0|      2|          2|       0|           6|        1|
+|16  |   16|       0|      0|          2|       2|           9|        1|
+|17  |   17|       0|      1|          1|       0|           6|        1|
+|18  |   18|       0|      1|          1|       0|           6|        1|
+|19  |   19|       1|      2|          2|       0|           6|        1|
+
+
+***Relatório final para a área de negócio, com a variável target para criar estratégias baseada nos dados.***

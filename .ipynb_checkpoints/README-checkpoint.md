@@ -329,7 +329,7 @@ K-Medians é outro algoritmo de agrupamento relacionado ao K-Means, exceto que, 
 
 #### Métricas de Clusterização
 
-Métrica: Número de observações
+Métrica: **Número de observações**
 - O número de observações em cada cluster na partição final.
 
 Interpretação:
@@ -340,7 +340,7 @@ Interpretação:
 - Clusters que têm poucas observações podem conter discrepâncias ou observações incomuns com características únicas.
 
 
-Métrica: Soma de quadrados dentro do cluster (Within cluster sum of squares)
+Métrica: **Soma de quadrados dentro do cluster (Within cluster sum of squares)**
 - A soma dos desvios ao quadrado de cada observação e do centróide do cluster.
 
 Interpretação:
@@ -353,7 +353,7 @@ Interpretação:
 - Para comparar a variabilidade dentro do cluster de diferentes clusters, use a distância média do centróide.
 
 
-Métrica: Distância média do centróide
+Métrica: **Distância média do centróide**
 - A média das distâncias das observações ao centróide de cada cluster.
 
 Interpretação:
@@ -369,7 +369,7 @@ Interpretação:
 - Um valor máximo mais alto, especialmente em relação à distância média, indica uma observação no cluster que fica mais distante do centróide do cluster.
 
 
-Métrica: Centróide do cluster
+Métrica: **Centróide do cluster**
 - O meio de um cluster. Um centróide é um vetor que contém um número para cada variável, e que cada número é a média de uma variável para as observações nesse cluster. 
 - O centróide pode ser considerado a média multidimensional do cluster.
 
@@ -378,7 +378,7 @@ Interpretação:
 - Cada centróide pode ser visto como representando a "observação média" dentro de um cluster em todas as variáveis da análise.
 
 
-Métrica: Distâncias entre centróides de cluster
+Métrica: **Distâncias entre centróides de cluster**
 - As distâncias entre os centróides do cluster medem a distância entre os centróides dos clusters na partição final.
 
 Interpretação:
@@ -390,6 +390,179 @@ Cluster Analysis
 https://www-users.cs.umn.edu/~kumar001/dmbook/ch8.pdf
 
 
+## Segmentação 1
+
+Vamos realizar nossa primeira segmentação usando 2 variáveis.
+
+### Segmentação 1 - Definindo o Número de Atributos
+
+Usando 2 Variáveis (Pizza e Sobremesa).
+
+
+Muitas vezes, os dados com os quais você trabalha têm várias dimensões, dificultando a visualização. Como consequência, o número ideal de clusters não é muito óbvio. Felizmente, temos uma maneira de determinar isso matematicamente.
+
+Representamos graficamente a relação entre o número de clusters e a soma dos quadrados dentro do cluster (Within Cluster Sum of Squares - WCSS) e, em seguida, selecionamos o número de clusters nos quais a mudança no WCSS começa a se estabilizar (Método Elbow).
+
+
+### Segmentação 1 - Encontrando o Valor Ideal de Clusters
+
+Vamos testar diferentes valores de K (valores de cluster) entre 2 e 10.
+    - Devemos conversar com a área de negócio para saber qual a estratégica quanto a criação e número de grupos/clusters.
+
+![image](imagens/wcss_segmentacao01.png)
+
+- Escolhemos o valor ideal de clusters e criamos o modelo final para a Segmentação 1. 
+- Observe no gráfico acima que não há certo ou errado. 
+- Poderíamos trabalhar com qualquer valor entre 2 e 10 (não faz sentido criar apenas 1 cluster).
+
+- O gráfico acima é chamado de Curva de Elbow e normalmente usamos o valor com o menor WCSS. 
+    - Quanto menor o WCSS melhor, pois assim representa mais homogeneidade nos clusters "menor distância dos dados dentro dos cluasters".
+    
+- Mas isso deve ser alinhado com as necessidade de negócio. 
+    - Para esse exemplo, não faria sentido usar 10 clusters. 
+    - Vamos começar com 2 clusters e avaliar e interpretar os resultados.
 
 
 
+#### Segmentação 1 - Visualização e Interpretação dos Segmentos
+
+
+![image](imagens/kmeans_segmentacao01.png)
+
+
+**Interpretação**: 
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- No cluster 1 (área em verde) temos os clientes que pediram 0, 1 ou 2 Pizzas. Em todos os casos houve pedido de Sobremesa.
+- No cluster 2 (área em cinza) estão clientes que pediram 2, 3, 4 ou 5 Pizzas. Perceba que à medida que o pedido tem maior número de Pizzas, também aumenta o número de Sobremesas.
+
+**Análise**:
+
+- Cluster 1 - Clientes que pedem menos Pizzas. Todos pedem sobremesa.
+- Cluster 2 - Clientes que pedem mais Pizzas. Todos pedem sobremesa em volume maior.
+
+Como estratégia de Marketing, poderíamos oferecer ao cliente uma sobremesa grátis no caso de comprar mais uma Pizza de maior valor. Com base na Segmentação provavelmente essa estratégia teria sucesso.
+
+
+## Segmentação 2
+
+Segmentação 2 - Variáveis Pizza e Salada
+
+![image](imagens/curva_elbow_segm02.png)
+
+- Vamos criar o modelo com 3 clusters.
+
+
+![image](imagens/kmeans_segm02.png)
+
+
+**Interpretação**: 
+
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- No cluster 1 (área em cinza) temos os clientes que pediram menos Pizzas e mais Saladas.
+- No cluster 2 (área em verde escuro) temos os clientes que pediram poucas Pizzas e poucas Saladas.
+- No cluster 3 (área em verde claro) estão clientes que pediram mais Pizzas e menos Saladas.
+
+**Análise**:
+
+- Os clusters 1 e 3 são de clientes com comportamentos opostos. 
+- A equipe de Marketing poderia concentrar os esforços nos clientes do cluster 2, pois são clientes que compram Pizzas e Saladas e, portanto, tendem a consumir mais itens variados evitando manter os estoques cheios de um único item. 
+- Ou então, concentrar os esforços nos clientes que consomem produtos que geram mais lucro. 
+- Teríamos que verificar qual item, Pizza ou Salada, é mais rentável.
+
+
+## Segmentação 3
+
+Segmentação 3 - Variáveis Pizza e Localidade
+
+![image](imagens/curva_elbow_segm03.png)
+
+- Vamos criar o modelo com 4 clusters.
+
+![image](imagens/kmeans_segm03.png)
+
+**Interpretação**: 
+
+- O ponto vermelho é o centróide de cada cluster (segmento).
+- Observe que os clusters da esquerda no gráfico contém os pedidos de todas as Localidades, mas com menor número de Pizzas. 
+- Já os clusters da direita no gráfico contém pedidos de todas as Localidades com com maior número de Pizzas.
+
+**Análise**:
+
+- Queremos aumentar as vendas, certo? 
+- Então teríamos que investigar mais a fundo os pedidos dos clusters à esquerda do gráfico e compreender em mais detalhes as características desses pedidos e que tipo de oferta podemos fazer.
+
+
+
+## Segmentação 4
+
+Segmentação 4 - Variáveis Pizza, Salada e Localidade
+
+![image](imagens/curva_elbow_segm04.png)
+
+- Vamos criar o modelo com 4 clusters.
+
+
+![image](imagens/kmeans_segm04.png)
+
+
+**Interpretação**: 
+
+- Observamos 2 clusters inferiores e 2 superiores.
+- Cada ponto de dado representa uma coordenada de 3 dimensões.
+
+**Análise**:
+
+- Aqui o ideal é avaliar o gráfico de forma interativa aproveitando essa propriedade do Plotly.
+
+
+## Segmentação 5
+
+Segmentação 5 - Variáveis Pizza, Salada e Sobremesa
+
+![image](imagens/curva_elbow_segm05.png)
+
+- Vamos criar o modelo com 2 clusters.
+
+
+![image](imagens/kmeans_segm05.png)
+
+
+**Interpretação**: 
+
+- Observamos a clara separação entre os dados dois 2 clusters.
+- Cada ponto de dado representa uma coordenada de 3 dimensões.
+
+**Análise**:
+
+- Aqui o ideal é avaliar o gráfico de forma interativa aproveitando essa propriedade do Plotly.
+
+
+
+**Exemplo de Relatório final (Considerando a Segmentação 5)**
+
+
+|idx |index|  bebida|  pizza|  sobremesa|  salada|  localidade|  cluster|
+|----|-----|--------|-------|-----------|--------|------------|---------|
+|0   |    0|       0|      1|          1|       0|           9|        1|
+|1   |    1|       0|      2|          2|       0|           6|        1|
+|2   |    2|       4|      4|          5|       1|           9|        0|
+|3   |    3|       0|      1|          1|       0|           6|        1|
+|4   |    4|       3|      3|          3|       0|           2|        0|
+|5   |    5|       3|      3|          4|       1|           9|        0|
+|6   |    6|       3|      4|          4|       0|           5|        0|
+|7   |    7|       4|      4|          5|       1|           4|        0|
+|8   |    8|       4|      4|          4|       0|           5|        0|
+|9   |    9|       0|      2|          2|       0|           6|        1|
+|10  |   10|       0|      0|          1|       1|           4|        1|
+|11  |   11|       0|      1|          3|       2|           8|        1|
+|12  |   12|       0|      1|          1|       0|           2|        1|
+|13  |   13|       0|      1|          1|       0|           2|        1|
+|14  |   14|       3|      3|          3|       0|           4|        0|
+|15  |   15|       0|      2|          2|       0|           6|        1|
+|16  |   16|       0|      0|          2|       2|           9|        1|
+|17  |   17|       0|      1|          1|       0|           6|        1|
+|18  |   18|       0|      1|          1|       0|           6|        1|
+|19  |   19|       1|      2|          2|       0|           6|        1|
+
+
+***Relatório final para a área de negócio, com a variável target para criar estratégias baseada nos dados.***

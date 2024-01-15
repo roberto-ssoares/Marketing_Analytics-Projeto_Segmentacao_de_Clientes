@@ -550,3 +550,8 @@ Segmentação 5 - Variáveis Pizza, Salada e Sobremesa
 
 
 ***Relatório final para a área de negócio, com a variável target para criar estratégias baseada nos dados.***
+
+
+
+![html](Marketing_Analytics-Projeto_Segmentacao_de_Clientes.html)
+

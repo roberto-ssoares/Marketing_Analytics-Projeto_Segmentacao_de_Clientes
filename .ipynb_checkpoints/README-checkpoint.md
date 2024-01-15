@@ -104,22 +104,6 @@ Dataset com 260645 linhas e 7 colunas
 |longitude                             | Longitude da localidade onde o pedido foi gerado.                     |
 |______________________________________|_______________________________________________________________________|
 
-
-
-## Dicionário de Dados
-
-|Variável                              | Descrição                                                             |
-|--------------------------------------|-----------------------------------------------------------------------|
-|id_transacao                          | ID da transação. Um mesmo ID pode ter vários itens de um pedido.      |
-|horario_pedido                        | Horário exato do pedido.                                              |
-|localidade                            | Localidade que processou o pedido (unidade do restaurante).           |
-|nome_item                             | Nome do item (pizza, salada, bebida e sobremesa).                     |
-|quantidade_item                       | Quantidade de itens no pedido.                                        |
-|latitude                              | Latitude da localidade onde o pedido foi gerado.                      |
-|longitude                             | Longitude da localidade onde o pedido foi gerado.                     |
-|______________________________________|_______________________________________________________________________|
-
-
 ### Análise Exploratória
 
 Vamos explorar os dados por diferentes perspectivas e compreender um pouco mais o relacionamento entre as variáveis.
@@ -566,3 +550,8 @@ Segmentação 5 - Variáveis Pizza, Salada e Sobremesa
 
 
 ***Relatório final para a área de negócio, com a variável target para criar estratégias baseada nos dados.***
+
+
+
+![html](Marketing_Analytics-Projeto_Segmentacao_de_Clientes.html)
+
